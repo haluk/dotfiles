@@ -62,26 +62,22 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	autojump
 	bgnotify
 	colored-man-pages
-	command-not-found	
+	command-not-found
 	copyfile
-	dircycle
 	docker
-	encode64
 	extract
-	fzf
 	git
-	github
 	gpg-agent
-	history
 	jsontools
-	navi
 	pass
 	per-directory-history
 	pip
+	poetry
+	python
 	ssh-agent
+	vi-mode
 	wd
 	web-search
 	zsh-autosuggestions
@@ -137,7 +133,7 @@ jjar() {
 fzfp() {
     fzf --preview="bat --style=numbers --color=always {}"
 }
-convertpdf() {
+zeynep() {
     pdftoppm -jpeg $1 $2
     convert $2-*.jpg $2.pdf
 }
@@ -170,26 +166,6 @@ function listcols {
     awk -F$sep '{for (i = 1; i <= NF; i++) print i":", $i; exit}' $@
 }
 
-function apt-history() {
-    case "$1" in
-      install)
-            cat /var/log/dpkg.log | grep 'install '
-            ;;
-      upgrade|remove)
-            cat /var/log/dpkg.log | grep $1
-            ;;
-      rollback)
-            cat /var/log/dpkg.log | grep upgrade | \
-                grep "$2" -A10000000 | \
-                grep "$3" -B10000000 | \
-                awk '{print $4"="$5}'
-            ;;
-      *)
-            cat /var/log/dpkg.log
-            ;;
-    esac
-}
-
 # LESSPIPE
 # Set the Less input preprocessor.
 if type lesspipe.sh >/dev/null 2>&1; then
@@ -205,6 +181,7 @@ export MANPATH=/home/hd/Applications/texlive/2019/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/home/hd/Applications/texlive/2019/texmf-dist/doc/info:$INFOPATH
 export PATH=/home/hd/Applications/texlive/2019/bin/x86_64-linux:$PATH
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
+export PATH=$PATH:$HOME/.poetry/bin
 
 # Python
 ## pyenv
@@ -213,6 +190,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ## pipenv
 #eval "$(pipenv --completion)"
+fpath+=~/.zfunc
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -224,6 +202,9 @@ eval "$(nodenv init -)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# editor
+export EDITOR=emacs
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hd/.sdkman"
