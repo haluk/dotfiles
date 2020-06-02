@@ -67,6 +67,7 @@ plugins=(
 	command-not-found
 	copyfile
 	docker
+    docker-compose
 	extract
 	git
 	gpg-agent
@@ -76,6 +77,7 @@ plugins=(
 	pip
 	poetry
 	python
+    ripgrep
 	ssh-agent
 	vi-mode
 	wd
