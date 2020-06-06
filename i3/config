@@ -259,7 +259,7 @@ new_window 1pixel
 
 # Run applications
 bindsym $mod+Shift+n exec --no-startup-id nemo
-
+bindsym $mod+Shift+s exec --no-startup-id cinnamon-settings
 
 # ---------------------------------------------------------------------------------------------------
 
