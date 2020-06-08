@@ -179,9 +179,9 @@ if type pygmentize >/dev/null 2>&1; then
 fi
 
 # Path
-export MANPATH=/home/hd/Applications/texlive/2019/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/home/hd/Applications/texlive/2019/texmf-dist/doc/info:$INFOPATH
-export PATH=/home/hd/Applications/texlive/2019/bin/x86_64-linux:$PATH
+export MANPATH=/home/hd/Applications/texlive/2020/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/home/hd/Applications/texlive/2020/texmf-dist/doc/info:$INFOPATH
+export PATH=/home/hd/Applications/texlive/2020/bin/x86_64-linux:$PATH
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 export PATH=$PATH:$HOME/.poetry/bin
 
