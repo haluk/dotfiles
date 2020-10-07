@@ -11,9 +11,9 @@ import numpy as np
 import pandas as pd
 import scipy as sp
 
-# Display floats with 2 decimal places
+# Display floats with 3 decimal places
 pd.options.display.float_format = "{:,.3f}".format
- 
+
 # Expand display limits
 pd.options.display.max_rows = 200
 pd.options.display.max_columns = 100
