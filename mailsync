@@ -1,0 +1,29 @@
+#!/bin/sh
+
+maildir=~/.mail
+# find "$maildir" -mindepth 1 -maxdepth 1 -type d ! -name cur ! -name tmp ! -name new ! -name .notmuch -printf '%f\0' | xargs -0 -n1 --max-procs=0 mbsync
+# mailboxes=$(find "$maildir" -mindepth 1 -maxdepth 1 -type d ! -name cur ! -name tmp ! -name new ! -name .notmuch -printf '%f\n')
+channels=("vivaldi")
+
+LOCKFILE="/tmp/.mailsync.$USER.lock"
+# https://stackoverflow.com/questions/185451/quick-and-dirty-way-to-ensure-only-one-instance-of-a-shell-script-is-running-at
+# /!\ locking method is susceptible to race condition
+# Should be fine for cron job
+if [ -e "$LOCKFILE" ] && kill -0 "$(cat "$LOCKFILE")"; then
+    echo "mailsync is already running"
+    exit 1
+fi
+
+# make sure the lockfile is removed when we exit and then claim it
+trap "rm -f $LOCKFILE; exit" INT TERM EXIT
+echo $$ > "$LOCKFILE"
+
+for m in $channels; do
+    mbsync "$m" &
+done
+
+wait
+
+notmuch new
+
+rm -f "$LOCKFILE"
