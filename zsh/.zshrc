@@ -1,158 +1,103 @@
-# If you come from bash you might have to change your $PATH. export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/home/hd/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	bgnotify
-	colored-man-pages
-	command-not-found
-	copyfile
-	docker
-    docker-compose
-	extract
-	git
-	gpg-agent
-	jsontools
-	pass
-	per-directory-history
-	pip
-	poetry
-	python
-    ripgrep
-	ssh-agent
-	vi-mode
-	wd
-	web-search
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Spaceship theme configuration
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_CHAR_SYMBOL="λ "
-SPACESHIP_USER_SHOW=always
-SPACESHIP_HOST_SHOW=always
-
 source $HOME/.bash_aliases
 
-# Functions
-dotp() {
-    dot -Tpng $1.dot -o $1.png; xviewer $1.png
-}
-jjar() {
-    java -jar $1.jar "${@:2}"
-}
-fzfp() {
-    fzf --preview="bat --style=numbers --color=always {}"
-}
-zeynep() {
-    pdftoppm -jpeg $1 $2
-    convert $2-*.jpg $2.pdf
+export PATH=$HOME/.local/bin:$PATH
+
+export TERM="screen-256color"
+
+export EDITOR="emacs"
+
+#
+# Oh-my-zsh
+#
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# LESSPIPE
+# Set the Less input preprocessor.
+if type lesspipe.sh >/dev/null 2>&1; then	
+  export LESSOPEN='|lesspipe.sh %s'
+fi
+
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true # Show prefix before first line in prompt
+ZSH_THEME="spaceship" # Set theme
+
+plugins=(
+  colored-man-pages # Self-explanatory
+  extract
+  git # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
+  history-substring-search # ZSH port of Fish history search. Begin typing command, use up arrow to select previous use
+  ssh-agent
+  zsh-autosuggestions # Suggests commands based on your history
+  zsh-completions # More completions
+  zsh-syntax-highlighting # Fish shell like syntax highlighting for Zsh
+)
+autoload -U compinit && compinit # reload completions for zsh-completions
+
+source $ZSH/oh-my-zsh.sh # required
+
+# Colorize autosuggest
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+
+#
+# Spaceship-prompt
+#
+
+# Spaceship-prompt customization
+SPACESHIP_PROMPT_ORDER=(
+dir             # Current directory section
+user            # Username section
+host            # Hostname section
+git             # Git section (git_branch + git_status)
+time            # Time stampts section
+# hg            # Mercurial section (hg_branch  + hg_status)
+# package       # Package version
+# node          # Node.js section
+# ruby          # Ruby section
+# elixir        # Elixir section
+# xcode         # Xcode section
+# swift         # Swift section
+# golang        # Go section
+# php           # PHP section
+# rust          # Rust section
+# haskell       # Haskell Stack section
+# julia         # Julia section
+# docker        # Docker section
+# aws           # Amazon Web Services section
+venv            # virtualenv section
+# conda         # conda virtualenv section
+# pyenv         # Pyenv section
+# dotnet        # .NET section
+# ember         # Ember.js section
+# kubecontext   # Kubectl context section
+exec_time       # Execution time
+line_sep        # Line break
+battery         # Battery level and status
+vi_mode         # Vi-mode indicator
+jobs            # Background jobs indicator
+# exit_code     # Exit code section
+char            # Prompt character
+)
+
+SPACESHIP_DIR_PREFIX="%{$fg[blue]%}┌─[%b "
+SPACESHIP_DIR_SUFFIX="%{$fg[blue]%} ] "
+SPACESHIP_CHAR_SYMBOL="%{$fg[blue]%}└─λ%b "
+
+#
+# Other
+#
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
 }
 
-function prettycsv {
-    local arg sep
-    sep=","
-    while getopts 's:' arg
-    do
-        case ${arg} in
-            s) sep=${OPTARG};;
-            *) return 1 # illegal option
-        esac
-    done
-    shift $((OPTIND -1))
-    column -t -s$sep -n "$@" | less -N -F -S -X -K
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
 }
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 
 function listcols {
     local arg sep
@@ -168,45 +113,9 @@ function listcols {
     awk -F$sep '{for (i = 1; i <= NF; i++) print i":", $i; exit}' $@
 }
 
-# LESSPIPE
-# Set the Less input preprocessor.
-if type lesspipe.sh >/dev/null 2>&1; then
-  export LESSOPEN='|lesspipe.sh %s'
-fi
-
-if type pygmentize >/dev/null 2>&1; then
-  export LESSCOLORIZER='pygmentize'
-fi
-
-# Path
-export MANPATH=/home/hd/Applications/texlive/2020/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/home/hd/Applications/texlive/2020/texmf-dist/doc/info:$INFOPATH
-export PATH=/home/hd/Applications/texlive/2020/bin/x86_64-linux:$PATH
-export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
-export PATH=$PATH:$HOME/.poetry/bin
-
-# Python
-## pyenv
-export PATH="/home/hd/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-## pipenv
-#eval "$(pipenv --completion)"
-fpath+=~/.zfunc
-
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Nodejs
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# editor
-export EDITOR=emacs
+function cless () {
+    pygmentize -f terminal "$1" | less -R
+}
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hd/.sdkman"
