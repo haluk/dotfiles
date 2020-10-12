@@ -72,7 +72,7 @@
 
 ;; editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook 'py-isort-before-save)
+;;(add-hook 'before-save-hook 'py-isort-before-save)
 
 ;; Email
 ; use msmtp
