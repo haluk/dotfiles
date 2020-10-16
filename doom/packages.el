@@ -50,5 +50,5 @@
 ;(unpin! t)
 ;;(package! exwm)
 (package! ess)
-(package! sphinx-doc)
+(package! python-black)
 (package! selectric-mode)
