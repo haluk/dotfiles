@@ -1,22 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Emacs X WM
-;; (require 'exwm)
-;; (require 'exwm-config)
-;; (exwm-config-default)
-;; (require 'exwm-randr)
-;; (setq exwm-randr-workspace-monitor-plist '(0 "eDP1"))
-;; (add-hook 'exwm-randr-screen-change-hook
-;;           (lambda ()
-;;             (start-process-shell-command
-;;              "xrandr" nil "xrandr --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal")))
-;; (exwm-randr-enable)
-;; (require 'exwm-systemtray)
-;; (exwm-systemtray-enable)
-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -51,7 +36,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -72,15 +56,17 @@
 
 ;; editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-;;(add-hook 'before-save-hook 'py-isort-before-save)
 
 ;; Email
-; use msmtp
+;; use msmtp
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "/usr/bin/msmtp")
-; tell msmtp to choose the SMTP server according to the from field in the outgoing email
+;; tell msmtp to choose the SMTP server according to the from field in the outgoing email
 (setq message-sendmail-extra-arguments '("--read-envelope-from"))
 (setq message-sendmail-f-is-evil 't)
+
+;; lsp-mode
+(setq lsp-enable-symbol-highlighting nil)
 
 ;; Python
 (setenv "WORKON_HOME" "~/Envs")
