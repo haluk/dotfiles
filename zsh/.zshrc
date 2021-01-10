@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 source $HOME/.bash_aliases
 
 export PATH=$HOME/.local/bin:$PATH
@@ -14,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # LESSPIPE
 # Set the Less input preprocessor.
-if type lesspipe.sh >/dev/null 2>&1; then	
+if type lesspipe.sh >/dev/null 2>&1; then
   export LESSOPEN='|lesspipe.sh %s'
 fi
 
@@ -116,6 +117,9 @@ function listcols {
 function cless () {
     pygmentize -f terminal "$1" | less -R
 }
+
+export WORKON_HOME=$HOME/Envs
+source /usr/bin/virtualenvwrapper.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hd/.sdkman"
