@@ -118,9 +118,14 @@ function cless () {
     pygmentize -f terminal "$1" | less -R
 }
 
+# LSCOLORS
+export LS_COLORS="$(vivid generate one-dark)"
+zstyle ':completion:*:default' list-colors "$LS_COLORS"
+
+# Python
 export WORKON_HOME=$HOME/Envs
 source /usr/bin/virtualenvwrapper.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/hd/.sdkman"
-[[ -s "/home/hd/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hd/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
