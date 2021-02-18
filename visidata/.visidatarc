@@ -1,0 +1,2 @@
+options.clipboard_copy_cmd = 'xclip -selection primary'
+options.disp_rstatus_fmt = ' R:{sheet.cursorRowIndex}/{sheet.nRows}[{sheet.nSelectedRows}] C:{sheet.cursorVisibleColIndex}/{sheet.nVisibleCols} {sheet.rowtype} '
