@@ -20,7 +20,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Roboto Mono" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "Roboto Mono" :size 14 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -54,8 +54,13 @@
 ;; they are implemented.
 ;;(set-frame-parameter nil 'fullscreen 'fullboth)
 
-;; editor
+;; Editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; ace-window font face
+(custom-set-faces!
+  '(aw-leading-char-face
+    :foreground "white" :background "red"
+    :weight bold :height 2.5 :box (:line-width 10 :color "red")))
 
 ;; Email
 ;; use msmtp
@@ -69,4 +74,4 @@
 (setq lsp-enable-symbol-highlighting nil)
 
 ;; Python
-(setenv "WORKON_HOME" "~/Envs")
+;; (setenv "WORKON_HOME" "~/Envs")
