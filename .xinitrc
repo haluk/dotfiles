@@ -39,7 +39,7 @@ setxkbmap us &
 xrandr --output eDP1 --mode 1920x1080 &
 
 # Compositor
-picom -b --config $HOME/.config/picom/picom.conf -f &
+picom -b -f --experimental-backends --transparent-clipping --config $HOME/.config/picom/picom.conf &
 
 # Notification
 dunst &
