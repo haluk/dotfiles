@@ -7,23 +7,45 @@ export TERM="screen-256color"
 
 export EDITOR="emacs"
 
+export LESS="-i -J -M -R -W -x4 -z-4"
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;45;30m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+# LESSPIPE
+if type pygmentize >/dev/null 2>&1; then
+  export LESSCOLORIZER='pygmentize'
+fi
+# Set the Less input preprocessor.
+if type lesspipe.sh >/dev/null 2>&1; then
+  export LESSOPEN='|lesspipe.sh %s'
+fi
+
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;45;30m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+
 #
 # Oh-my-zsh
 #
 
 export ZSH="$HOME/.oh-my-zsh"
 
-# LESSPIPE
-# Set the Less input preprocessor.
-if type lesspipe.sh >/dev/null 2>&1; then
-  export LESSOPEN='|lesspipe.sh %s'
-fi
-
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true # Show prefix before first line in prompt
 ZSH_THEME="spaceship" # Set theme
 
 plugins=(
-  colored-man-pages # Self-explanatory
+  docker-compose
   extract
   git # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
   history-substring-search # ZSH port of Fish history search. Begin typing command, use up arrow to select previous use
@@ -50,7 +72,7 @@ user            # Username section
 host            # Hostname section
 git             # Git section (git_branch + git_status)
 time            # Time stampts section
-# hg            # Mercurial section (hg_branch  + hg_status)
+hg            # Mercurial section (hg_branch  + hg_status)
 # package       # Package version
 # node          # Node.js section
 # ruby          # Ruby section
