@@ -5,5 +5,6 @@ def cursorRowIndex1(sheet):
 def cursorVisibleColIndex1(sheet):
     return sheet.cursorVisibleColIndex+1
 
+options.use_default_colors = True
 options.clipboard_copy_cmd = 'xclip -selection primary'
 options.disp_rstatus_fmt = ' R:{sheet.cursorRowIndex1}/{sheet.nRows}[{sheet.nSelectedRows}] C:{sheet.cursorVisibleColIndex1}/{sheet.nVisibleCols}'

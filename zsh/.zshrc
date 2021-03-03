@@ -72,7 +72,7 @@ user            # Username section
 host            # Hostname section
 git             # Git section (git_branch + git_status)
 time            # Time stampts section
-hg            # Mercurial section (hg_branch  + hg_status)
+hg              # Mercurial section (hg_branch  + hg_status)
 # package       # Package version
 # node          # Node.js section
 # ruby          # Ruby section
@@ -88,7 +88,7 @@ hg            # Mercurial section (hg_branch  + hg_status)
 # aws           # Amazon Web Services section
 venv            # virtualenv section
 # conda         # conda virtualenv section
-# pyenv         # Pyenv section
+# pyenv           # Pyenv section
 # dotnet        # .NET section
 # ember         # Ember.js section
 # kubecontext   # Kubectl context section
@@ -145,8 +145,17 @@ export LS_COLORS="$(vivid generate one-dark)"
 zstyle ':completion:*:default' list-colors "$LS_COLORS"
 
 # Python
-export WORKON_HOME=$HOME/Envs
-source /usr/bin/virtualenvwrapper.sh
+export PATH="/home/hd/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# export WORKON_HOME=$HOME/Envs
+# export VIRTUALENVWRAPPER=$HOME/.local/pipx/venvs/virtualenvwrapper
+# export VIRTUALENVWRAPPER_PYTHON=$VIRTUALENVWRAPPER/bin/python
+# source $VIRTUALENVWRAPPER/bin/virtualenvwrapper.sh
+# export PATH="$VIRTUALENVWRAPPER/bin:$PATH"
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
