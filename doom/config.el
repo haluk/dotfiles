@@ -20,8 +20,8 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Roboto Mono" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Roboto Mono" :size 18 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "monospace" :size 15 :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -34,7 +34,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;;(setq display-line-numbers-type nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -61,6 +61,9 @@
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
+;; modeline
+;;(setq inhibit-compacting-font-caches t)
+;; (remove-hook 'after-init-hook #'doom-modeline-mode)
 
 ;; Email
 ;; use msmtp
@@ -73,5 +76,14 @@
 ;; lsp-mode
 (setq lsp-enable-symbol-highlighting nil)
 
-;; Python
-;; (setenv "WORKON_HOME" "~/Envs")
+;; pdftools
+(setq +latex-viewers '(pdf-tools))
+
+;; org-mode
+(setq org-roam-directory "~/roam")
+(setq org-roam-db-location "~/roam/org-roam.db")
+
+
+;; PL
+;; fsharp
+(setq inferior-fsharp-program "dotnet fsi --readline-")
