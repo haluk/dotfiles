@@ -89,7 +89,7 @@ hg              # Mercurial section (hg_branch  + hg_status)
 venv            # virtualenv section
 # conda         # conda virtualenv section
 # pyenv           # Pyenv section
-# dotnet        # .NET section
+dotnet        # .NET section
 # ember         # Ember.js section
 # kubecontext   # Kubectl context section
 exec_time       # Execution time
@@ -156,6 +156,19 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # source $VIRTUALENVWRAPPER/bin/virtualenvwrapper.sh
 # export PATH="$VIRTUALENVWRAPPER/bin:$PATH"
 
+# Dotnet
+# export PATH=$PATH:$HOME/Applications/dotnet
+# export PATH=$PATH:$HOME/git/sw/netcoredbg/.dotnet
+# zsh parameter completion for the dotnet CLI
+
+# _dotnet_zsh_complete()
+# {
+#   local completions=("$(dotnet complete "$words")")
+
+#   reply=( "${(ps:\n:)completions}" )
+# }
+
+# compctl -K _dotnet_zsh_complete dotnet
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
