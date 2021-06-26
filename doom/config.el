@@ -56,20 +56,17 @@
 
 ;; Editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; ace-window font face
+; ace-window font face
 (custom-set-faces!
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
-;; modeline
-;;(setq inhibit-compacting-font-caches t)
-;; (remove-hook 'after-init-hook #'doom-modeline-mode)
 
 ;; Email
-;; use msmtp
+; use msmtp
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "/usr/bin/msmtp")
-;; tell msmtp to choose the SMTP server according to the from field in the outgoing email
+; tell msmtp to choose the SMTP server according to the from field in the outgoing email
 (setq message-sendmail-extra-arguments '("--read-envelope-from"))
 (setq message-sendmail-f-is-evil 't)
 
@@ -79,11 +76,13 @@
 ;; pdftools
 (setq +latex-viewers '(pdf-tools))
 
-;; org-mode
-(setq org-roam-directory "~/roam")
-(setq org-roam-db-location "~/roam/org-roam.db")
-
+;; Company backends
+(add-to-list '+lsp-company-backends 'company-files)
 
 ;; PL
-;; fsharp
-(setq inferior-fsharp-program "dotnet fsi --readline-")
+; Python
+(setenv "WORKON_HOME" "~/.pyenv/versions")
+
+; tex
+(after! tex
+  (remove-hook 'TeX-update-style-hook #'rainbow-delimiters-mode))
