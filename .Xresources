@@ -27,3 +27,5 @@ Xft.lcdfilter: lcddefault
 *color14: #2cbab6
 *color15: #b4abac
 
+# to fix doom-modeline misbehaving pixels
+#Xft.rgba: none
