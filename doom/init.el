@@ -23,8 +23,8 @@
        company             ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy +icons)        ; a search engine for love and life
-       ;;vertico           ; the search engine of the future
+       ;;ivy               ; a search engine for love and life
+       vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -32,7 +32,6 @@
        ;;doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)    ; 🙂
-       ;; fill-column      ; a `fill-column' indicator
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        indent-guides       ; highlighted indent columns
@@ -88,7 +87,7 @@
        ;;ansible
        (debugger +lsp)     ; FIXME stepping through code, to help you add bugs
        direnv
-       ;;docker
+       docker
        editorconfig        ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -125,7 +124,7 @@
        ;;elm               ; care for a cup of TEA?
        emacs-lisp          ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
-       ;;(ess +lsp)        ; emacs speaks statistics
+       ;;ess               ; emacs speaks statistics
        ;;factor
        ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp            ; ML stands for Microsoft's Language
@@ -146,7 +145,6 @@
         +lsp
         +fold)             ; writing papers in Emacs has never been so fun
        ;;lean
-       ;;factor
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
@@ -183,7 +181,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       ;;(mu4e +gmail)
+       ;;(mu4e +org +gmail)
        notmuch
        ;;(wanderlust +gmail)
 
