@@ -60,6 +60,7 @@
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
+(global-set-key (kbd "C-c b") 'bool-flip-do-flip)
 
 ;; Email
 ; use msmtp
@@ -82,7 +83,7 @@
 
 ;; PL
 ; Python
-(setenv "WORKON_HOME" "~/.pyenv/versions")
+(setenv "WORKON_HOME" "~/.virtualenvs")
 
 ; tex
 (after! tex
