@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! bool-flip)
+(package! link-hint)

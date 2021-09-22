@@ -61,6 +61,12 @@
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
 (global-set-key (kbd "C-c b") 'bool-flip-do-flip)
+; modeline
+(setq doom-modeline-modal-icon nil)
+; follow links
+(define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
+(define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
+
 
 ;; Email
 ; use msmtp
@@ -71,6 +77,15 @@
 (setq message-sendmail-f-is-evil 't)
 ; notmuch
  (after! notmuch (set-popup-rule! "^\\*notmuch-hello" :ignore t))
+
+;; RSS
+(after! elfeed
+  (setq elfeed-search-filter "@2-weeks-ago +unread")
+  (setq elfeed-sort-order 'descending)
+  (setq elfeed-search-title-max-width 100)
+  (setq elfeed-search-title-min-width 30)
+  (setq elfeed-search-trailing-width 25)
+  (setq elfeed-show-truncate-long-urls t))
 
 ;; lsp-mode
 (setq lsp-enable-symbol-highlighting nil)

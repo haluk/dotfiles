@@ -9,4 +9,12 @@ def cursorVisibleColIndex1(sheet):
 options.clipboard_copy_cmd = 'xclip -selection primary'
 options.disp_rstatus_fmt = ' R:{sheet.cursorRowIndex1}/{sheet.nRows}[{sheet.nSelectedRows}] C:{sheet.cursorVisibleColIndex1}/{sheet.nVisibleCols}'
 
+options.disp_menu=False
+
 options.color_default=""
+options.color_keystrokes="black"
+options.color_active_status="black"
+options.color_status="black"
+options.color_menu="black"
+options.color_menu_active="226 yellow"
+options.color_menu_help="black italic"
