@@ -85,7 +85,9 @@
   (setq elfeed-search-title-max-width 100)
   (setq elfeed-search-title-min-width 30)
   (setq elfeed-search-trailing-width 25)
-  (setq elfeed-show-truncate-long-urls t))
+  (setq elfeed-show-truncate-long-urls t)
+  (setq elfeed-goodies/entry-pane-position 'bottom))
+(add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 
 ;; lsp-mode
 (setq lsp-enable-symbol-highlighting nil)
@@ -98,7 +100,8 @@
 
 ;; PL
 ; Python
-(setenv "WORKON_HOME" "~/.virtualenvs")
+;; (setenv "WORKON_HOME" "~/.virtualenvs")
+(setenv "WORKON_HOME" "~/.pyenv/versions")
 
 ; tex
 (after! tex
