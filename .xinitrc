@@ -53,6 +53,9 @@ wallpaper-changer &
 wmname LG3D &
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Emacs
+emacs --daemon &
+
 # Execute DWM
 dwm
 
