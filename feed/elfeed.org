@@ -1,0 +1,13 @@
+* root :elfeed:
+** Programming :programming:
+*** [[https://www.blog.pythonlibrary.org/feed/][Mouse vs Python]] :python:
+*** [[http://blog.finxter.com/feed][Finxter]] :python:
+*** [[http://planet.scipy.org/atom.xml?format=xml][Planet Scipy]] :python:
+** Emacs :emacs:
+*** [[https://planet.emacslife.com/atom.xml][Planet Emacslife]] :community:
+** News :news:
+*** [[https://lobste.rs/rss][Lobste.rs]] :tech:
+** Science :science:
+*** [[https://www.epistem.ink/feed][epistem]] :AI:
+** React :react:
+*** [[https://www.reddit.com/r/react.rss][reddit]] :React:
