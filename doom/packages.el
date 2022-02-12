@@ -53,6 +53,4 @@
 (package! bool-flip)
 (package! link-hint)
 (package! prettier)
-
-;; workaround
-(package! dired-git-info :pin "9461476a28a5fec0784260f6e318237c662c3430")
+(package! dirvish)

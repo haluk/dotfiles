@@ -63,6 +63,7 @@
 (global-set-key (kbd "C-c b") 'bool-flip-do-flip)
 ; modeline
 (setq doom-modeline-modal-icon nil)
+(setq all-the-icons-scale-factor 1.1)
 ; follow links
 (define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
@@ -91,6 +92,8 @@
 
 ;; lsp-mode
 (setq lsp-enable-symbol-highlighting nil)
+(setq lsp-ui-sideline-enable nil)
+(setq lsp-ui-doc-enabled nil)
 
 ;; pdftools
 (setq +latex-viewers '(pdf-tools))
