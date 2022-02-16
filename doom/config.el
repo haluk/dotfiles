@@ -34,7 +34,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -64,6 +64,8 @@
 ; modeline
 (setq doom-modeline-modal-icon nil)
 (setq all-the-icons-scale-factor 1.1)
+(setq doom-modeline-enable-word-count nil)
+(setq doom-modeline-env-enable-python nil)
 ; follow links
 (define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
@@ -95,6 +97,23 @@
 (setq lsp-ui-sideline-enable nil)
 (setq lsp-ui-doc-enabled nil)
 
+(setq lsp-auto-guess-root t)
+(setq lsp-log-io nil)
+(setq lsp-restart 'auto-restart)
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-signature-auto-activate nil)
+(setq lsp-signature-render-documentation nil)
+(setq lsp-eldoc-hook nil)
+(setq lsp-modeline-code-actions-enable nil)
+(setq lsp-modeline-diagnostics-enable nil)
+(setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-semantic-tokens-enable nil)
+(setq lsp-enable-folding nil)
+(setq lsp-enable-imenu nil)
+(setq lsp-enable-snippet nil)
+(setq read-process-output-max (* 1024 1024)) ;; 1MB
+(setq lsp-idle-delay 0.5)
+
 ;; pdftools
 (setq +latex-viewers '(pdf-tools))
 
@@ -103,9 +122,9 @@
 
 ;; PL
 ; Python
-;; (setenv "WORKON_HOME" "~/.virtualenvs")
 (setenv "WORKON_HOME" "~/.pyenv/versions")
+(setq lsp-pylsp-plugins-jedi-use-pyenv-environment t)
 
-; tex
+; TeX
 (after! tex
   (remove-hook 'TeX-update-style-hook #'rainbow-delimiters-mode))
