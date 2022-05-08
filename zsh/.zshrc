@@ -3,37 +3,11 @@ source $HOME/.bash_aliases
 
 export PATH=$HOME/.local/bin:$PATH
 
-export TERM="screen-256color"
-
 export EDITOR="emacs"
 
 export LESS="-i -J -M -R -W -x4 -z-4"
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_so=$'\E[30;48;05;19m' # begin reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-
-# LESSPIPE
-if type pygmentize >/dev/null 2>&1; then
-  export LESSCOLORIZER='pygmentize'
-fi
-# Set the Less input preprocessor.
-if type lesspipe.sh >/dev/null 2>&1; then
-  export LESSOPEN='|lesspipe.sh %s'
-fi
-
-man() {
-    LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\E[30;48;05;19m'
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    command man "$@"
-}
+export LESSCOLORIZER='pygmentize -O style=monokai'
+LESSOPEN="|$HOME/.local/bin/lesspipe.sh %s"; export LESSOPEN
 
 #
 # Oh-my-zsh
@@ -42,14 +16,19 @@ man() {
 export ZSH="$HOME/.oh-my-zsh"
 
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true # Show prefix before first line in prompt
-ZSH_THEME="spaceship" # Set theme
+export VIRTUAL_ENV_DISABLE_PROMPT=true
 
+ZSH_THEME="spaceship" # Set theme
 plugins=(
+  # colored-man-pages
+  docker
   docker-compose
   extract
   git # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
   history-substring-search # ZSH port of Fish history search. Begin typing command, use up arrow to select previous use
   ssh-agent
+  pass
+  pyenv
   zsh-autosuggestions # Suggests commands based on your history
   zsh-completions # More completions
   zsh-syntax-highlighting # Fish shell like syntax highlighting for Zsh
@@ -84,12 +63,12 @@ hg              # Mercurial section (hg_branch  + hg_status)
 # rust          # Rust section
 # haskell       # Haskell Stack section
 # julia         # Julia section
-# docker        # Docker section
+docker        # Docker section
 # aws           # Amazon Web Services section
-venv            # virtualenv section
+# venv            # virtualenv section
 # conda         # conda virtualenv section
-# pyenv           # Pyenv section
-dotnet        # .NET section
+pyenv           # Pyenv section
+# dotnet         # .NET section
 # ember         # Ember.js section
 # kubecontext   # Kubectl context section
 exec_time       # Execution time
@@ -122,54 +101,27 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-function listcols {
-    local arg sep
-    sep=","
-    while getopts 's:' arg
-    do
-        case ${arg} in
-            s) sep=${OPTARG};;
-            *) return 1 # illegal option
-        esac
-    done
-    shift $((OPTIND -1))
-    awk -F$sep '{for (i = 1; i <= NF; i++) print i":", $i; exit}' $@
-}
-
-function cless () {
-    pygmentize -f terminal "$1" | less -R
-}
-
-# LSCOLORS
+## LSCOLORS
 export LS_COLORS="$(vivid generate one-dark)"
 zstyle ':completion:*:default' list-colors "$LS_COLORS"
 
-# Python
-export PATH="/home/hd/.pyenv/bin:$PATH"
+## EXACOLORS
+# timestamps a brighter shade of blue
+export EXA_COLORS="da=1;34"
+
+## TERMCAP colors
+[[ -f ~/.LESS_TERMCAP ]] && . $HOME/.LESS_TERMCAP
+
+# pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export WORKON_HOME="~/.pyenv/versions"
+# virtualenvwrapper
+# source $HOME/.pyenv/versions/3.10.0/bin/virtualenvwrapper.sh
 
-# export WORKON_HOME=$HOME/Envs
-# export VIRTUALENVWRAPPER=$HOME/.local/pipx/venvs/virtualenvwrapper
-# export VIRTUALENVWRAPPER_PYTHON=$VIRTUALENVWRAPPER/bin/python
-# source $VIRTUALENVWRAPPER/bin/virtualenvwrapper.sh
-# export PATH="$VIRTUALENVWRAPPER/bin:$PATH"
-
-# Dotnet
-# export PATH=$PATH:$HOME/Applications/dotnet
-# export PATH=$PATH:$HOME/git/sw/netcoredbg/.dotnet
-# zsh parameter completion for the dotnet CLI
-
-# _dotnet_zsh_complete()
-# {
-#   local completions=("$(dotnet complete "$words")")
-
-#   reply=( "${(ps:\n:)completions}" )
-# }
-
-# compctl -K _dotnet_zsh_complete dotnet
+# Docker
+export DOCKER_USER="$(id -u):$(id -g)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/hd/.sdkman"
+[[ -s "/home/hd/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hd/.sdkman/bin/sdkman-init.sh"

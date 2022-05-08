@@ -55,6 +55,7 @@
 
 ;; Editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (pixel-scroll-precision-mode)
 ; ace-window font face
 (custom-set-faces!
   '(aw-leading-char-face
@@ -69,7 +70,8 @@
 ; follow links
 (define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
-
+; dirvish
+(set-face-attribute 'ansi-color-blue nil :foreground "#FFFFFF")
 
 ;; Email
 ; use msmtp
@@ -96,6 +98,9 @@
 (setq lsp-enable-symbol-highlighting nil)
 (setq lsp-ui-sideline-enable nil)
 (setq lsp-ui-doc-enabled nil)
+(setq lsp-ui-imenu-enable 't)
+(setq lsp-ui-imenu-auto-refresh 't)
+(setq lsp-ui-imenu--custom-mode-line-format "")
 
 (setq lsp-auto-guess-root t)
 (setq lsp-log-io nil)

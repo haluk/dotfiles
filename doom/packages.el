@@ -54,3 +54,6 @@
 (package! link-hint)
 (package! prettier)
 (package! dirvish)
+(package! dired-hide-dotfiles)
+(package! mermaid-mode)
+(package! tldr)
