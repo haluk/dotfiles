@@ -26,7 +26,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-tokyo-night)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -72,6 +73,8 @@
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
 ; dirvish
 (set-face-attribute 'ansi-color-blue nil :foreground "#FFFFFF")
+;; Treemacs
+(setq doom-themes-treemacs-enable-variable-pitch nil)
 
 ;; Email
 ; use msmtp
