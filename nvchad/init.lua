@@ -1,0 +1,25 @@
+-- example file i.e lua/custom/init.lua
+
+-- load your globals, autocmds here or anything .__.
+-- vim.cmd([[
+-- let g:VM_bs_map = {}
+-- function! DisableAutopairsMappings() abort
+--     if mapcheck('<BS>', 'i') !=# ''
+--         let g:VM_bs_map = maparg('<BS>', 'i', 0 , 1)
+--         if g:VM_bs_map.buffer == 0 || g:VM_bs_map.expr == 0
+--             throw 'Unexpected mapping options!'
+--         endif
+--         lua require('nvim-autopairs').disable()
+--         iunmap <buffer> <expr> <BS>
+--     endif
+-- endfunction
+-- function! EnableAutopairsMappings() abort
+--     if g:VM_bs_map != {}
+--         execute 'inoremap <buffer> <expr> <BS> ' . g:VM_bs_map.rhs
+--         lua require('nvim-autopairs').enable()
+--         let g:VM_bs_map = {}
+--     endif
+-- endfunction
+-- autocmd vimrc User visual_multi_start call DisableAutopairsMappings()
+-- autocmd vimrc User visual_multi_exit  call EnableAutopairsMappings()
+-- ]])
