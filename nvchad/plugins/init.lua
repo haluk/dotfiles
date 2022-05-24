@@ -34,16 +34,17 @@ return {
      end,
    },
 
-   -- ["mg979/vim-visual-multi"] = {
-   --   -- event = { "BufRead", "BufNewFile" },
-   --   config = function()
-   --     -- Visual Multi plugin key mappings.
-   --     vim.g.VM_theme = "codedark"
-   --     vim.g.VM_maps = {
-   --       ["Find Under"] = "<C-d>",
-   --       ["Find Subword Under"] = "<C-d>",
-   --     }
-   --   end,
-   -- },
+   -- Telescope
+   ["nvim-telescope/telescope-project.nvim"] = {
+     config = function()
+       require("telescope").load_extension("project")
+     end,
+   },
+
+   ["nvim-telescope/telescope-file-browser.nvim"] = {
+     config = function()
+       require("telescope").load_extension("file_browser")
+     end,
+   },
 
  }

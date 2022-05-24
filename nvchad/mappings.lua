@@ -64,4 +64,17 @@ M.smart_splits = {
   },
 }
 
+M.telescope = {
+  n = {
+
+    ["<leader>fe"] = {
+      "<cmd> Telescope file_browser <CR>", "file browser"
+    },
+
+    ["<leader>fp"] = {
+      "<cmd> Telescope project <CR>", "project management"
+    },
+  },
+}
+
 return M
