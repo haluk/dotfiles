@@ -21,13 +21,13 @@
 ;;(setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "Roboto Mono" :size 14 :weight 'regular)
-       doom-variable-pitch-font (font-spec :family "monospace" :size 11 :weight 'regular))
+      doom-variable-pitch-font (font-spec :family "monospace" :size 11 :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'doom-oceanic-next)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -57,34 +57,34 @@
 ;; Editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (pixel-scroll-precision-mode)
-; ace-window font face
+                                        ; ace-window font face
 (custom-set-faces!
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
 (global-set-key (kbd "C-c b") 'bool-flip-do-flip)
-; modeline
+                                        ; modeline
 (setq doom-modeline-modal-icon nil)
 (setq all-the-icons-scale-factor 1.1)
 (setq doom-modeline-enable-word-count nil)
 (setq doom-modeline-env-enable-python nil)
-; follow links
+                                        ; follow links
 (define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
-; dirvish
+                                        ; dirvish
 (set-face-attribute 'ansi-color-blue nil :foreground "#FFFFFF")
 ;; Treemacs
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 
 ;; Email
-; use msmtp
+                                        ; use msmtp
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "/usr/bin/msmtp")
-; tell msmtp to choose the SMTP server according to the from field in the outgoing email
+                                        ; tell msmtp to choose the SMTP server according to the from field in the outgoing email
 (setq message-sendmail-extra-arguments '("--read-envelope-from"))
 (setq message-sendmail-f-is-evil 't)
-; notmuch
- (after! notmuch (set-popup-rule! "^\\*notmuch-hello" :ignore t))
+                                        ; notmuch
+(after! notmuch (set-popup-rule! "^\\*notmuch-hello" :ignore t))
 
 ;; RSS
 (after! elfeed
@@ -129,10 +129,40 @@
 (add-to-list '+lsp-company-backends 'company-files)
 
 ;; PL
-; Python
+                                        ; Python
 (setenv "WORKON_HOME" "~/.pyenv/versions")
 (setq lsp-pylsp-plugins-jedi-use-pyenv-environment t)
 
-; TeX
+                                        ; TeX
 (after! tex
   (remove-hook 'TeX-update-style-hook #'rainbow-delimiters-mode))
+
+                                        ; Org
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (http . t)))
+
+                                        ; Sql
+(defun remove-trailing-newline (point)
+  (if (= (char-before point) ?\n)
+      (- point 1)
+    point))
+
+(defun sql-format (start end)
+  "Formats the selected sql `sqlformat'"
+  (interactive "r")
+  (shell-command-on-region
+   ;; beginning and end of buffer
+   start
+   (remove-trailing-newline end)
+   ;; command and parameters
+   "sqlformat -k upper -r -s -a --indent_columns -"
+   ;; output buffer
+   (current-buffer)
+   ;; replace?
+   t
+   ;; name of the error buffer
+   "*Sqlformat Error Buffer*"
+   ;; show error buffer?
+   t))
