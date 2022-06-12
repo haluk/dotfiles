@@ -36,12 +36,14 @@ return {
 
    -- Telescope
    ["nvim-telescope/telescope-project.nvim"] = {
+     module = "telescope",
      config = function()
        require("telescope").load_extension("project")
      end,
    },
 
    ["nvim-telescope/telescope-file-browser.nvim"] = {
+     module = "telescope",
      config = function()
        require("telescope").load_extension("file_browser")
      end,
