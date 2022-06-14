@@ -129,21 +129,23 @@
 (add-to-list '+lsp-company-backends 'company-files)
 
 ;; PL
-                                        ; Python
+; Python
 (setenv "WORKON_HOME" "~/.pyenv/versions")
 (setq lsp-pylsp-plugins-jedi-use-pyenv-environment t)
 
-                                        ; TeX
+; TeX
 (after! tex
   (remove-hook 'TeX-update-style-hook #'rainbow-delimiters-mode))
 
-                                        ; Org
+; Org
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
    (http . t)))
 
-                                        ; Sql
+(add-to-list 'org-latex-packages-alist '("ruled,vlined" "algorithm2e"))
+
+; SQL
 (defun remove-trailing-newline (point)
   (if (= (char-before point) ?\n)
       (- point 1)
