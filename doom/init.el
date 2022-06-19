@@ -15,6 +15,7 @@
 ;;      directory (for easy access to its source code).
 
 (doom! :input
+       ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
@@ -76,7 +77,7 @@
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       vterm             ; the best terminal emulation in Emacs
+       vterm               ; the best terminal emulation in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
@@ -104,6 +105,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        tmux                ; an API for interacting with tmux
+       tree-sitter         ; syntax and parsing, sitting in a tree...
        upload              ; map local to remote projects via ssh/ftp
 
        :os
@@ -114,7 +116,10 @@
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
        ;;(cc +lsp)         ; C/C++/Obj-C madness
-       (clojure +lsp)      ; java with a lisp
+       (clojure
+        +lsp
+        +tree-sitter
+        )                  ; java with a lisp
        common-lisp         ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
@@ -138,19 +143,31 @@
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       (json +lsp)         ; At least it ain't XML
+       (json
+        +lsp
+        +tree-sitter
+        )                  ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript
+        +lsp
+        +tree-sitter
+        )                  ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex
         +latexmk
         +cdlatex
         +lsp
-        +fold)             ; writing papers in Emacs has never been so fun
+        +fold
+        +tree-sitter
+        )                  ; writing papers in Emacs has never been so fun
        ;;lean
        ;;ledger            ; an accounting system in Emacs
-       (lua +fennel +lsp)  ; one-based indices? one-based indices
+       (lua
+        +fennel
+        +lsp
+        +tree-sitter
+        )                  ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -170,6 +187,7 @@
         +lsp
         +pyright
         +pyenv
+        +tree-sitter
        )                   ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -180,13 +198,13 @@
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       sh                  ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +tree-sitter)   ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       web                 ; the tubes
-       yaml                ; JSON, but readable
+       (web +tree-sitter)  ; the tubes
+       (yaml +tree-sitter) ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
