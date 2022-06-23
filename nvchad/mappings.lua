@@ -68,12 +68,17 @@ M.telescope = {
   n = {
 
     ["<leader>fe"] = {
-      "<cmd> Telescope file_browser <CR>", "file browser"
+      "<cmd> Telescope file_browser <CR>", "  file browser"
     },
 
     ["<leader>fp"] = {
-      "<cmd> Telescope project <CR>", "project management"
+      "<cmd> Telescope project <CR>", "  project management"
     },
+
+    ["<leader>fr"] = {
+      "<cmd> Telescope live_grep_args <CR>", "  live grep args"
+    },
+
   },
 }
 

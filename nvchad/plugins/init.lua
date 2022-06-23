@@ -49,4 +49,15 @@ return {
      end,
    },
 
+   ["nvim-telescope/telescope-live-grep-args.nvim"] = {
+     module = "telescope",
+     config = function()
+       require("telescope").load_extension("live_grep_args")
+     end,
+   },
+
+   ["nvim-telescope/telescope.nvim"] = {
+     module = "telescope",
+   },
+
  }
