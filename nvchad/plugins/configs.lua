@@ -18,7 +18,7 @@ M.nvimtree = {
 }
 
 M.telescope = {
-  extensions_list = { "file_browser", "project", "live_grep_args" },
+  extensions_list = { "file_browser", "live_grep_args", "media_files", "project" },
 }
 
 return M

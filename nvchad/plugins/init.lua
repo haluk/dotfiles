@@ -35,29 +35,9 @@ return {
    },
 
    -- Telescope
-   ["nvim-telescope/telescope-project.nvim"] = {
-     module = "telescope",
-     config = function()
-       require("telescope").load_extension("project")
-     end,
-   },
-
-   ["nvim-telescope/telescope-file-browser.nvim"] = {
-     module = "telescope",
-     config = function()
-       require("telescope").load_extension("file_browser")
-     end,
-   },
-
-   ["nvim-telescope/telescope-live-grep-args.nvim"] = {
-     module = "telescope",
-     config = function()
-       require("telescope").load_extension("live_grep_args")
-     end,
-   },
-
-   ["nvim-telescope/telescope.nvim"] = {
-     module = "telescope",
-   },
+   ["nvim-telescope/telescope-file-browser.nvim"] = {},
+   ["nvim-telescope/telescope-project.nvim"] = {},
+   ["nvim-telescope/telescope-live-grep-args.nvim"] = {},   
+   ["nvim-telescope/telescope-media-files.nvim"] = {},
 
  }

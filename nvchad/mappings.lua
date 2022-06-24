@@ -79,6 +79,14 @@ M.telescope = {
       "<cmd> Telescope live_grep_args <CR>", "  live grep args"
     },
 
+    ["<leader>fw"] = {
+      "<cmd> Telescope live_grep <CR> ", "  live grep"
+    },
+
+    ["<leader>fo"] = {
+      "<cmd> Telescope oldfiles <CR>", "  find oldfiles"
+    },
+
   },
 }
 
