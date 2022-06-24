@@ -2,13 +2,15 @@ local M = {}
 
 local userPlugins = require "custom.plugins"
 local pluginConfs = require "custom.plugins.configs"
+local userHighlights = require "custom.highlights"
 
 M.ui = {
-   theme = "catppuccin",
+  theme = "catppuccin",
+  hl_override = userHighlights,
 }
 
 M.plugins = {
-  
+
   options = {
     lspconfig = {
       setup_lspconf = "custom.plugins.lspconfig",

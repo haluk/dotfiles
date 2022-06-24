@@ -40,4 +40,20 @@ return {
    ["nvim-telescope/telescope-live-grep-args.nvim"] = {},   
    ["nvim-telescope/telescope-media-files.nvim"] = {},
 
+   -- LSP
+   ['ray-x/navigator.lua'] = {
+     requires = {
+       { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+       { 'neovim/nvim-lspconfig' },
+     },
+
+     config = function()
+       require("navigator").setup {
+         debug = true,
+         lsp_installer = true,
+         keymaps = { { key = 'gR', func = "require('navigator.reference').async_ref()" } },
+       }
+     end,
+   },
+
  }
