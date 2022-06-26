@@ -1,6 +1,24 @@
 local config = {
 
+  -- Configure AstroNvim updates
+  updater = {
+    remote = "origin", -- remote to use
+    channel = "nightly", -- "stable" or "nightly"
+    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "main", -- branch name (NIGHTLY ONLY)
+    commit = nil, -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false, -- skip prompts about breaking changes
+    show_changelog = true, -- show the changelog after performing an update
+    -- remotes = { -- easily add new remotes to track
+    --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
+    --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
+    --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
+    -- },
+  },
+
   -- Set colorscheme
+
   colorscheme = "catppuccin",
 
   -- set vim options here (vim.<first_key>.<second_key> =  value)
@@ -13,7 +31,7 @@ local config = {
     },
   },
 
-  -- Set dashboard headers
+    -- Set dashboard headers
   header = {
     [[                            oooo                                         ]],
     [[                            `888                                         ]],
@@ -46,23 +64,28 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      --
-      -- theme
-      {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-          require("catppuccin").setup {}
-        end,
-      },
+      -- {
+      --   "catppuccin/nvim",
+      --   as = "catppuccin",
+      --   config = function()
+      --     require("catppuccin").setup {}
+      --   end,
+      -- },
       -- lsp
       {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
         config = function()
           require("lsp_signature").setup()
-        end,        
+        end,
       },
+      -- telescope
+      -- {
+      --   "nvim-telescope/telescope-live-grep-args.nvim",
+      --   config = function()
+      --     require("telescope").load_extension("live_grep_args")
+      --   end
+      -- }
     },
     -- All other entries override the setup() call for default plugins
     ["null-ls"] = function(config)
@@ -72,9 +95,14 @@ local config = {
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
       config.sources = {
         -- Set a formatter
-        null_ls.builtins.formatting.rufo,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.json_tool,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.shfmt,
         -- Set a linter
-        null_ls.builtins.diagnostics.rubocop,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.diagnostics.flake8,
       }
       -- set up null-ls's on_attach function
       config.on_attach = function(client)
@@ -96,7 +124,7 @@ local config = {
       ensure_installed = { "sumneko_lua", "pyright", "tsserver" },
     },
     packer = {
-      compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
+      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
     },
   },
 
@@ -146,6 +174,12 @@ local config = {
     servers = {
       -- "pyright"
     },
+    -- easily add or disable built in mappings added during LSP attaching
+    mappings = {
+      n = {
+        -- ["<leader>lf"] = false -- disable formatting keymap
+      },
+    },
     -- add to the server on_attach function
     -- on_attach = function(client, bufnr)
     -- end,
@@ -178,12 +212,23 @@ local config = {
     underline = true,
   },
 
-  -- This function is run last
-  -- good place to configure mappings and vim options
-  polish = function()
-    -- Set key bindings
-    vim.keymap.set("n", "<C-s>", ":w!<CR>")
+  mappings = {
+    -- first key is the mode
+    n = {
+      -- second key is the lefthand side of the map
+      ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+    },
+    t = {
+      -- setting a mapping to false will disable it
+      -- ["<esc>"] = false,
+    },
+  },
 
+  -- This function is run last
+  -- good place to configuring augroups/autocommands and custom filetypes
+  polish = function()
+    require "user.mappings"
+    -- Set key binding
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {

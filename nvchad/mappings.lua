@@ -90,4 +90,36 @@ M.telescope = {
   },
 }
 
+M.move = {
+  n = {
+    ["<A-j>"] = {
+      "<cmd> MoveLine(1) <CR>", "Move line down"
+    },
+    ["<A-k>"] = {
+      "<cmd> MoveLine(-1) <CR>", "Move line up"
+    },
+    ["<A-l>"] = {
+      "<cmd> MoveHChar(1) <CR>", "Move char right"
+    },
+    ["<A-h>"] = {
+      "<cmd> MoveHChar(-1) <CR>", "Move char left"
+    },
+  },
+  v = {
+    ["<A-j>"] = {
+      "<cmd> MoveBlock(1) <CR>", "Move block down"
+    },
+    ["<A-k>"] = {
+      "<cmd> MoveBlock(-1) <CR>", "Move block up"
+    },
+    ["<A-l>"] = {
+      "<cmd> MoveHBlock(1) <CR>", "Move chars right"
+    },
+    ["<A-h>"] = {
+      "<cmd> MoveHBlock(-1) <CR>", "Move chars left"
+    },
+  },
+
+}
+
 return M
