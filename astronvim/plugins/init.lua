@@ -133,4 +133,8 @@ return {
       require("spaceless").setup()
     end,
   },
+
+  ["fedepujol/move.nvim"] = {},
 }
+
+
