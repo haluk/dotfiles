@@ -88,35 +88,6 @@ local config = {
       -- }
     },
     -- All other entries override the setup() call for default plugins
-    ["null-ls"] = function(config)
-      local null_ls = require "null-ls"
-      -- Check supported formatters and linters
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-      config.sources = {
-        -- Set a formatter
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.json_tool,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.shfmt,
-        -- Set a linter
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.diagnostics.flake8,
-      }
-      -- set up null-ls's on_attach function
-      config.on_attach = function(client)
-        -- NOTE: You can remove this on attach function to disable format on save
-        if client.resolved_capabilities.document_formatting then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            desc = "Auto format before save",
-            pattern = "<buffer>",
-            callback = vim.lsp.buf.formatting_sync,
-          })
-        end
-      end
-      return config -- return final config table
-    end,
     treesitter = {
       ensure_installed = { "python", "javascript", "css", "scss", "lua" },
     },
@@ -181,8 +152,17 @@ local config = {
       },
     },
     -- add to the server on_attach function
-    -- on_attach = function(client, bufnr)
-    -- end,
+    on_attach = function(client, bufnr)
+      local map = vim.keymap.set
+      local opts = { buffer = 0 }
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+
+      if client.server_capabilities.document_range_formatting then
+        print("var")
+        map("x", "<leader>lF", "<cmd>lua vim.lsp.buf.range_formatting()<CR><Esc>", opts)
+      end
+    end,
 
     -- override the lsp installer server-registration function
     -- server_registration = function(server, opts)

@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-
 -- Telescope
 map("n", "<leader>fp", function()
   require("telescope").extensions.project.project {}
@@ -25,3 +24,5 @@ map("v", "<A-k>", "<cmd> MoveBlock(-1) <CR>", { desc = "Move line up" })
 map("v", "<A-l", "<cmd> MoveHBlock(1) <CR>", { desc = "Move char right" })
 map("v", "<A-h", "<cmd> MoveHBlock(-1) <CR>", { desc = "Move char left" })
 
+-- formatting
+map("v", "<leader>lF", "<ESC><cmd>lua vim.lsp.buf.range_formatting() <CR>")
