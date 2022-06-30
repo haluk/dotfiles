@@ -52,40 +52,6 @@ local config = {
   plugins = {
     -- Add plugins, the packer syntax without the "use"
     init = {
-      -- You can disable default plugins as follows:
-      -- ["goolord/alpha-nvim"] = { disable = true },
-
-      -- You can also add new plugins here as well:
-      -- { "andweeb/presence.nvim" },
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
-      -- {
-      --   "catppuccin/nvim",
-      --   as = "catppuccin",
-      --   config = function()
-      --     require("catppuccin").setup {}
-      --   end,
-      -- },
-      -- lsp
-      {
-        "ray-x/lsp_signature.nvim",
-        event = "BufRead",
-        config = function()
-          require("lsp_signature").setup()
-        end,
-      },
-      -- telescope
-      -- {
-      --   "nvim-telescope/telescope-live-grep-args.nvim",
-      --   config = function()
-      --     require("telescope").load_extension("live_grep_args")
-      --   end
-      -- }
     },
     -- All other entries override the setup() call for default plugins
     treesitter = {
@@ -153,15 +119,6 @@ local config = {
     },
     -- add to the server on_attach function
     on_attach = function(client, bufnr)
-      local map = vim.keymap.set
-      local opts = { buffer = 0 }
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-
-      if client.server_capabilities.document_range_formatting then
-        print("var")
-        map("x", "<leader>lF", "<cmd>lua vim.lsp.buf.range_formatting()<CR><Esc>", opts)
-      end
     end,
 
     -- override the lsp installer server-registration function

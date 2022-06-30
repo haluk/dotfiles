@@ -1,4 +1,5 @@
 local status_ok, null_ls = pcall(require, "null-ls")
+local format_on_save = false
 
 if status_ok then
   local builtins = null_ls.builtins
@@ -17,7 +18,9 @@ if status_ok then
       builtins.formatting.prettier.with {
         filetypes = {
           "javascript",
+          "javascriptreact",
           "typescript",
+          "typescriptreact",
           "css",
           "scss",
           "html",
@@ -45,15 +48,17 @@ if status_ok then
     },
     on_attach = function(client)
       -- Format on save
-      if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          desc = "Auto format before save",
-          pattern = "<buffer>",
-          callback = function()
-            vim.lsp.buf.formatting_sync()
-            -- vim.lsp.buf.formatting_sync(nil, 2000)
-          end,
-        })
+      if format_on_save then
+        if client.resolved_capabilities.document_formatting then
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            desc = "Auto format before save",
+            pattern = "<buffer>",
+            callback = function()
+              vim.lsp.buf.formatting_sync()
+              -- vim.lsp.buf.formatting_sync(nil, 2000)
+            end,
+          })
+        end
       end
     end,
   }
