@@ -1,12 +1,28 @@
 return {
   -- Disable default plugins
-  -- ["declancm/cinnamon.nvim"] = { disable = true },
+  ["declancm/cinnamon.nvim"] = { disable = true },
 
-  -- Colorscheme/theme
+  -- ui
+  -- Dressing
+  ["stevearc/dressing.nvim"] = {},
+
+  -- highlight
+  ["Pocco81/HighStr.nvim"] = {},
+
+    -- Colorscheme/theme
   ["catppuccin/nvim"] = {
     config = function()
       require("catppuccin").setup {}
     end,
+  },
+
+  -- Fold
+  ["anuvyklack/pretty-fold.nvim"] = {
+    requires = { "anuvyklack/nvim-keymap-amend" },
+    config = function()
+      require("pretty-fold").setup()
+      require("pretty-fold.preview").setup()
+    end
   },
 
   -- Font for icons
@@ -134,7 +150,41 @@ return {
     end,
   },
 
-  ["fedepujol/move.nvim"] = {},
+  -- ["fedepujol/move.nvim"] = {},
+  ["booperlv/nvim-gomove"] = {
+    config = function()
+      require("gomove").setup {
+        -- whether or not to map default key bindings, (true/false)
+        map_defaults = true,
+        -- whether or not to reindent lines moved vertically (true/false)
+        reindent = true,
+        -- whether or not to undojoin same direction moves (true/false)
+        undojoin = true,
+        -- whether to not to move past end column when moving blocks horizontally, (true/false)
+        move_past_end_col = false,
+      }
+    end,
+  },
+
+  ["sQVe/sort.nvim"] = {
+    config = function()
+      require("sort").setup()
+    end,
+  },
+
+  -- swap
+  ["mizlan/iswap.nvim"] = {},
+
+  -- peek lines
+  ["nacro90/numb.nvim"] = {},
+
+  -- substitute
+  ["gbprod/substitute.nvim"] = {
+    config = function()
+      require("substitute").setup()
+    end,
+  },
+
 
   -- LSP
   ["ray-x/lsp_signature.nvim"] = {
