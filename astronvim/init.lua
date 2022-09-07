@@ -3,9 +3,9 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
+    channel = "stable", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "v2", -- branch name (NIGHTLY ONLY)
+    branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
     skip_prompts = false, -- skip prompts about breaking changes
@@ -55,10 +55,10 @@ local config = {
     },
     -- All other entries override the setup() call for default plugins
     treesitter = {
-      ensure_installed = { "python", "javascript", "css", "scss", "lua" },
+      ensure_installed = { "python", "javascript", "css", "scss", "lua", "sql" },
     },
     ["nvim-lsp-installer"] = {
-      ensure_installed = { "sumneko_lua", "pyright", "tsserver" },
+      ensure_installed = { "sumneko_lua", "pyright", "tsserver", "sqls" },
     },
     packer = {
       compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",

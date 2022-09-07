@@ -24,5 +24,6 @@ end, { desc = " File browser" })
 -- map("v", "<A-C-l", "<cmd> MoveHBlock(1) <CR>", { desc = "Move char right" })
 -- map("v", "<A-C-h", "<cmd> MoveHBlock(-1) <CR>", { desc = "Move char left" })
 
--- formatting
+-- Formatting
 map("v", "<leader>lF", "<ESC><cmd>lua vim.lsp.buf.range_formatting() <CR>")
+

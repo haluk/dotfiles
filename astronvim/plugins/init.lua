@@ -21,7 +21,13 @@ return {
     requires = { "anuvyklack/nvim-keymap-amend" },
     config = function()
       require("pretty-fold").setup()
-      require("pretty-fold.preview").setup()
+    end
+  },
+
+  ["anuvyklack/fold-preview.nvim"] = {
+    requires = "anuvyklack/keymap-amend.nvim",
+    config = function()
+      require("fold-preview").setup()
     end
   },
 
@@ -132,8 +138,6 @@ return {
   },
 
   -- Programming, Testing, Debugging
-  -- sqls language server
-  ["nanotee/sqls.nvim"] = { module = "sqls" },
 
   -- Better quickfix window
   ["kevinhwang91/nvim-bqf"] = {
@@ -192,7 +196,8 @@ return {
     config = function()
       require("lsp_signature").setup()
     end,
-  }
+  },
+
  }
 
 

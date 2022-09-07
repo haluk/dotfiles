@@ -29,16 +29,17 @@ plugins=(
   ssh-agent
   pass
   pyenv
-  zsh-autosuggestions # Suggests commands based on your history
+  # zsh-autosuggestions # Suggests commands based on your history
   zsh-completions # More completions
   zsh-syntax-highlighting # Fish shell like syntax highlighting for Zsh
+  zsh-fzf-history-search
 )
 autoload -U compinit && compinit # reload completions for zsh-completions
 
 source $ZSH/oh-my-zsh.sh # required
 
 # Colorize autosuggest
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 #
 # Spaceship-prompt

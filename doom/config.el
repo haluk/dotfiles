@@ -77,13 +77,13 @@
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 
 ;; Email
-                                        ; use msmtp
+; use msmtp
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "/usr/bin/msmtp")
-                                        ; tell msmtp to choose the SMTP server according to the from field in the outgoing email
+; tell msmtp to choose the SMTP server according to the from field in the outgoing email
 (setq message-sendmail-extra-arguments '("--read-envelope-from"))
 (setq message-sendmail-f-is-evil 't)
-                                        ; notmuch
+; notmuch
 (after! notmuch (set-popup-rule! "^\\*notmuch-hello" :ignore t))
 
 ;; RSS
