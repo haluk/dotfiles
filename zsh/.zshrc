@@ -5,6 +5,7 @@ export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$PATH
 
 export EDITOR="emacs"
 
+
 export LESS="-i -J -M -R -W -x4 -z-4"
 export LESSCOLORIZER='pygmentize -O style=monokai'
 LESSOPEN="|$HOME/.local/bin/lesspipe.sh %s"; export LESSOPEN
@@ -45,40 +46,48 @@ source $ZSH/oh-my-zsh.sh # required
 # Spaceship-prompt
 #
 
-# Spaceship-prompt customization
 SPACESHIP_PROMPT_ORDER=(
-dir             # Current directory section
-user            # Username section
-host            # Hostname section
-git             # Git section (git_branch + git_status)
-time            # Time stampts section
-hg              # Mercurial section (hg_branch  + hg_status)
-# package       # Package version
-# node          # Node.js section
-# ruby          # Ruby section
-# elixir        # Elixir section
-# xcode         # Xcode section
-# swift         # Swift section
-# golang        # Go section
-# php           # PHP section
-# rust          # Rust section
-# haskell       # Haskell Stack section
-# julia         # Julia section
-docker        # Docker section
-# aws           # Amazon Web Services section
-# venv            # virtualenv section
-# conda         # conda virtualenv section
-pyenv           # Pyenv section
-# dotnet         # .NET section
-# ember         # Ember.js section
-# kubecontext   # Kubectl context section
-exec_time       # Execution time
-line_sep        # Line break
-battery         # Battery level and status
-vi_mode         # Vi-mode indicator
-jobs            # Background jobs indicator
-# exit_code     # Exit code section
-char            # Prompt character
+  dir           # Current directory section
+  user          # Username section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  time          # Time stamps section
+  hg            # Mercurial section (hg_branch  + hg_status)
+  # package       # Package version
+  # node          # Node.js section
+  # bun           # Bun section
+  # deno          # Deno section
+  # ruby          # Ruby section
+  python        # Python section
+  # elm           # Elm section
+  # elixir        # Elixir section
+  # xcode         # Xcode section
+  # swift         # Swift section
+  golang        # Go section
+  # php           # PHP section
+  rust          # Rust section
+  haskell       # Haskell Stack section
+  java          # Java section
+  lua           # Lua section
+  # dart          # Dart section
+  # julia         # Julia section
+  # crystal       # Crystal section
+  docker        # Docker section
+  # aws           # Amazon Web Services section
+  # gcloud        # Google Cloud Platform section
+  venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # dotnet        # .NET section
+  # kubectl       # Kubectl context section
+  # terraform     # Terraform workspace section
+  # ibmcloud      # IBM Cloud section
+  exec_time     # Execution time
+  # async         # Async jobs indicator
+  line_sep      # Line break
+  battery       # Battery level and status
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
 )
 
 SPACESHIP_DIR_PREFIX="%{$fg[blue]%}┌─[%b "

@@ -28,7 +28,7 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-oceanic-next)
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-sourcerer)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -58,24 +58,26 @@
 ;; Editor
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (pixel-scroll-precision-mode)
-                                        ; ace-window font face
+; ace-window font face
 (custom-set-faces!
   '(aw-leading-char-face
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
 (global-set-key (kbd "C-c b") 'bool-flip-do-flip)
-                                        ; modeline
+; modeline
 (setq doom-modeline-modal-icon nil)
 (setq all-the-icons-scale-factor 1.1)
 (setq doom-modeline-enable-word-count nil)
 (setq doom-modeline-env-enable-python nil)
-                                        ; follow links
+; follow links
 (define-key evil-normal-state-map (kbd "SPC l o") 'link-hint-open-link)
 (define-key evil-normal-state-map (kbd "SPC l c") 'link-hint-copy-link)
-                                        ; dirvish
+; dirvish
 (set-face-attribute 'ansi-color-blue nil :foreground "#FFFFFF")
 ;; Treemacs
 (setq doom-themes-treemacs-enable-variable-pitch nil)
+(global-set-key (kbd "C-c 0") 'treemacs-select-window)
+
 
 ;; Email
 ; use msmtp

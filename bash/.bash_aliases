@@ -10,3 +10,4 @@ alias cse="ssh -A hdogan@cse.unl.edu"
 
 alias up="nmcli conn up prorize"
 alias down="nmcli conn down prorize"
+alias dc="docker-compose"
