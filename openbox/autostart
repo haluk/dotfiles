@@ -1,0 +1,6 @@
+xscreensaver -no-splash &
+picom &
+dunst &
+tint2 &
+wallpaper-changer &
+emacs --daemon &
