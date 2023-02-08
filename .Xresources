@@ -7,41 +7,43 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
 ! special
-*.foreground:   #b7b8b9
-*.background:   #0c0d0e
-*.cursorColor:  #df2ded
+*.foreground:   #f8f8f8
+*.background:   #171717
+*.cursorColor:  #ff62ff
 
 ! black
-*.color0:       #0c0d0e
-*.color8:       #737475
+*.color0:       #171717
+! *.color8:       #38252c
+! *.color0:       #4a4a4a
+*.color8:       #c6c6c6
 
 ! red
-*.color1:       #e31a1c
-*.color9:       #e31a1c
+*.color1:       #d81765
+*.color9:       #ff0000
 
 ! green
-*.color2:       #31a354
-*.color10:      #31a354
+*.color2:       #97d01a
+*.color10:      #76b639
 
 ! yellow
-*.color3:       #dca060
-*.color11:      #dca060
+*.color3:       #ffa800
+*.color11:      #e1a126
 
 ! blue
-*.color4:       #3182bd
-*.color12:      #3182bd
+*.color4:       #16b1fb
+*.color12:      #289cd5
 
 ! magenta
-*.color5:       #756bb1
-*.color13:      #756bb1
+*.color5:       #ff2491
+*.color13:      #ff2491
 
 ! cyan
-*.color6:       #80b1d3
-*.color14:      #80b1d3
+*.color6:       #0fdcb6
+*.color14:      #0a9b81
 
 ! white
-*.color7:       #b7b8b9
-*.color15:      #fcfdfe
+*.color7:       #ebebeb
+*.color15:      #f8f8f8
 
 dwm.selbgcolor: #91069c
 dwm.selbordercolor: #91069c

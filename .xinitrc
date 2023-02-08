@@ -52,12 +52,15 @@ wallpaper-changer &
 # Problems with Java applications
 wmname LG3D &
 export _JAVA_AWT_WM_NONREPARENTING=1
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 # Emacs
 emacs --daemon &
 
 # Execute DWM
-dwm
+exec dwm
+# exec dbus-lunch openbox-session
+# exec openbox-session
 
 #xsetroot -cursor_name left_ptr &
 #exec emacs

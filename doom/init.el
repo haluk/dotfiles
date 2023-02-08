@@ -156,7 +156,7 @@
         +tree-sitter
         )                  ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
-       ;;kotlin            ; a better, slicker Java(Script)
+       (kotlin +lsp)       ; a better, slicker Java(Script)
        (latex
         +latexmk
         +cdlatex

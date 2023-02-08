@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $HOME/.bash_aliases
 
-export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH
 
 export EDITOR="emacs"
 

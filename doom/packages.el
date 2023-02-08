@@ -56,3 +56,5 @@
 (package! dired-hide-dotfiles)
 (package! mermaid-mode)
 (package! tldr)
+(package! ef-themes)
+(package! ialign)
