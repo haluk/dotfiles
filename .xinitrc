@@ -41,7 +41,8 @@ setxkbmap us &
 xrandr --output eDP1 --mode 1920x1080 &
 
 # Compositor
-picom -b --experimental-backends --config $HOME/.config/picom/picom.conf &
+# picom -b --experimental-backends --config $HOME/.config/picom/picom.conf &
+picom &
 
 # Notification
 dunst &

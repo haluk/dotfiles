@@ -10,6 +10,8 @@ export LESS="-i -J -M -R -W -x4 -z-4"
 export LESSCOLORIZER='pygmentize -O style=monokai'
 LESSOPEN="|$HOME/.local/bin/lesspipe.sh %s"; export LESSOPEN
 
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 #
 # Oh-my-zsh
 #
@@ -115,12 +117,8 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 export LS_COLORS="$(vivid generate one-dark)"
 zstyle ':completion:*:default' list-colors "$LS_COLORS"
 
-## EXACOLORS
-# timestamps a brighter shade of blue
-export EXA_COLORS="da=1;34"
-
 ## TERMCAP colors
-[[ -f ~/.LESS_TERMCAP ]] && . $HOME/.LESS_TERMCAP
+# [[ -f ~/.LESS_TERMCAP ]] && . $HOME/.LESS_TERMCAP
 
 # pyenv
 eval "$(pyenv init -)"
@@ -135,3 +133,4 @@ export DOCKER_USER="$(id -u):$(id -g)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hd/.sdkman"
 [[ -s "/home/hd/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hd/.sdkman/bin/sdkman-init.sh"
+

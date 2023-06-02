@@ -1,6 +1,8 @@
 alias vim="nvim"
 
 alias weather="curl 'wttr.in/?m'"
+alias align="column -t -s $'\t'"
+alias copy="xclip -sel clipboard"
 
 alias crane="ssh -A hdogan@crane.unl.edu"
 alias rhino="ssh -A hdogan@rhino.unl.edu"
