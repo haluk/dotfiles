@@ -85,6 +85,8 @@
     :foreground "white" :background "red"
     :weight bold :height 2.5 :box (:line-width 10 :color "red")))
 (global-set-key (kbd "C-c b") 'bool-flip-do-flip)
+; evil-matchit
+(global-evil-matchit-mode 1)
 ; modeline
 (setq doom-modeline-modal-icon nil)
 (setq all-the-icons-scale-factor 1.1)
@@ -157,6 +159,17 @@
 ; Python
 (setenv "WORKON_HOME" "~/.pyenv/versions")
 (setq lsp-pylsp-plugins-jedi-use-pyenv-environment t)
+
+; Kotlin
+(map! :map kotlin-mode-map
+      :localleader
+      :prefix ("l" . "lsp")
+      :desc "find definition" "f" #'lsp-find-definition)
+
+(add-hook 'kotlin-mode-hook
+          (lambda ()
+            (setq-local flycheck-checker 'kotlin-ktlint)
+            (setq-local flycheck-check-syntax-automatically '(mode-enabled save))))
 
 ; TeX
 (after! tex

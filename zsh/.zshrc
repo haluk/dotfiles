@@ -121,6 +121,8 @@ zstyle ':completion:*:default' list-colors "$LS_COLORS"
 # [[ -f ~/.LESS_TERMCAP ]] && . $HOME/.LESS_TERMCAP
 
 # pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export WORKON_HOME="~/.pyenv/versions"

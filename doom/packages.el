@@ -54,4 +54,5 @@
 (package! link-hint)
 (package! prettier)
 (package! dired-hide-dotfiles)
-
+(package! evil-matchit)
+(package! sicp)

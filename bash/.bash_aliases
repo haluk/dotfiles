@@ -13,3 +13,5 @@ alias cse="ssh -A hdogan@cse.unl.edu"
 alias up="nmcli conn up prorize"
 alias down="nmcli conn down prorize"
 alias dc="docker-compose"
+alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/latex'
+alias plantuml='java  -jar /home/hd/.config/emacs/.local/etc/plantuml.jar'
