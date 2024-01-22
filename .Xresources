@@ -6,6 +6,7 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.dpi: 96
+!Xft.dpi : 106
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
@@ -17,7 +18,7 @@ dwm.tagsselbgcolor: #91069c
 dwm.tagsselbordercolor: #91069c
 dwm.tagsselfloatcolor: #91069c
 
-st.font: CaskaydiaCove Nerd Font:pixelsize=14:antialias=true:autohint=true
+st.font: CaskaydiaCove NF:pixelsize=14:antialias=true:autohint=true
 
 ! iterm2 - popping and locking
 st.foreground:   #ebdbb2

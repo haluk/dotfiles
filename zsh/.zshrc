@@ -3,8 +3,8 @@ source $HOME/.bash_aliases
 
 export PATH=$HOME/.local/bin:$HOME/Applications/texlive/2023/bin/x86_64-linux:$PATH
 
-export EDITOR="emacs"
-
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export LESS="-i -J -M -R -W -x4 -z-4"
 export LESSCOLORIZER='pygmentize -O style=monokai'
@@ -32,6 +32,7 @@ plugins=(
   ssh-agent
   pass
   pyenv
+  nnn
   # zsh-autosuggestions # Suggests commands based on your history
   zsh-completions # More completions
   zsh-syntax-highlighting # Fish shell like syntax highlighting for Zsh
@@ -132,7 +133,10 @@ export WORKON_HOME="~/.pyenv/versions"
 # Docker
 export DOCKER_USER="$(id -u):$(id -g)"
 
+# Dotnet
+export DOTNET_ROOT=/home/hd/.dotnet/
+export PATH="$PATH:/home/hd/.dotnet/tools"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hd/.sdkman"
 [[ -s "/home/hd/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hd/.sdkman/bin/sdkman-init.sh"
-

@@ -10,5 +10,5 @@
 ** Science :science:
 *** [[https://www.epistem.ink/feed][epistem]] :AI:
 *** [[https://www.baeldung.com/cs/feed][baeldung]] :CS:
-** React :react:
-*** [[https://www.reddit.com/r/react.rss][reddit]] :React:
+# ** React :react:
+# *** [[https://www.reddit.com/r/react.rss][reddit]] :React:

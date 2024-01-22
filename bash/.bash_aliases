@@ -1,6 +1,9 @@
 alias vim="nvim"
 
 alias weather="curl 'wttr.in/?m'"
+alias atlanta="curl 'wttr.in/Atlanta'"
+alias alpharetta="curl 'wttr.in/Alpharetta'"
+alias istanbul="curl 'wttr.in/Istanbul'"
 alias align="column -t -s $'\t'"
 alias copy="xclip -sel clipboard"
 
